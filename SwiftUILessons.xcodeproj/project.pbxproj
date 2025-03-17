@@ -29,9 +29,22 @@
 		0A321F4E2D87227D00EC8B13 /* SwiftUILessonsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUILessonsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		0A5D838E2D872D7600B99F6E /* Exceptions for "SwiftUILessons" folder in "SwiftUILessons" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Configuration/Info.plist,
+			);
+			target = 0A321F332D87227B00EC8B13 /* SwiftUILessons */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		0A321F362D87227B00EC8B13 /* SwiftUILessons */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				0A5D838E2D872D7600B99F6E /* Exceptions for "SwiftUILessons" folder in "SwiftUILessons" target */,
+			);
 			path = SwiftUILessons;
 			sourceTree = "<group>";
 		};
@@ -395,10 +408,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftUILessons/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUILessons/Resources/PreviewContent\"";
 				DEVELOPMENT_TEAM = NYVBARHQBM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftUILessons/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -424,10 +438,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"SwiftUILessons/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"SwiftUILessons/Resources/PreviewContent\"";
 				DEVELOPMENT_TEAM = NYVBARHQBM;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftUILessons/Configuration/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
