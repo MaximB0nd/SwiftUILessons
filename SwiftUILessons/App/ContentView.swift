@@ -9,11 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
+        var n: Int = 0
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello")
+            Text("\(n)")
+            Button("Pick down", action: {
+                n+=1
+                })
         }
         .padding()
     }
