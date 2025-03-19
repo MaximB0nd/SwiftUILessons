@@ -7,8 +7,9 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct StartView: View {
     @State var side = 100.0
+    @State var text: String?
     
     var body: some View {
         var n: Int = 0
@@ -51,24 +52,27 @@ struct ContentView: View {
                 .fill(Color.yellow)
                 .frame(minWidth: 10, idealWidth: 100, maxWidth: 300, minHeight: 10, idealHeight: 100, maxHeight: 300, alignment: .trailing)
             
+            
+            Slider(value: $side, in: 0...100, label: {Text("Side: \(side)")})
+            Text("\(side)")
+            Rectangle()
+                .frame(
+                    minWidth: 25,
+                    maxWidth: 50,
+                    minHeight: 25,
+                    maxHeight: 50)
+                .border(.green, width: 3)
+                .frame(maxWidth: side,
+                       maxHeight: side)
+                .border(.green, width: 3)
+                .frame(maxWidth: .infinity,
+                       maxHeight: .infinity)
         }
-        .padding()
-//        Rectangle()
-//            .frame(
-//                maxWidth: 25,
-//                maxHeight: 25)
-//            .border(.green, width: 3)
-//            .frame(maxWidth: side,
-//                   maxHeight: side)
-//            .border(.green, width: 3)
-//            .frame(maxWidth: .infinity,
-//                   maxHeight: .infinity)
-//        
-//        Slider(value: $side, in: 0...100, label: {Text("Side: \(side)")})
-//        Text("\(side)")
+        .padding(50)
+        
     }
 }
 
 #Preview {
-    ContentView()
+    StartView()
 }
