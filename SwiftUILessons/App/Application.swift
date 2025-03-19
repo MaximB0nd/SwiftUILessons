@@ -13,7 +13,7 @@ struct Application: App {
         WindowGroup {
             //StartView()
             //FrameAlignment()
-            StartView()
+            StackView()
             
             
             
