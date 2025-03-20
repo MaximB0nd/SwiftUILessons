@@ -17,3 +17,23 @@ extension Font {
         custom(name.rawValue, size: size)
     }
 }
+
+struct FontBuilder {
+    let font: Font
+    let tracking: Double
+    let lineSpacing: Double
+    let verticalPadding: Double
+    
+    init (
+        customFont: CustomFonts,
+        fontSize: CGFloat,
+        letterSpacing: CGFloat,
+        lineHeight: CGFloat
+    ){
+        self.font = .custom(customFont, size: fontSize)
+        self.tracking = fontSize * letterSpacing
+        let uiFont = UIFont(name: customFont.rawValue, size: fontSize)!
+        self.lineSpacing = Double(uiFont.lineHeight - lineHeight)
+        self.verticalPadding = self.lineSpacing / 2
+    }
+}
