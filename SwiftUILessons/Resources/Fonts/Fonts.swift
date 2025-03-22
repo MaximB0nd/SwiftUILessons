@@ -18,6 +18,12 @@ extension Font {
     }
 }
 
+extension Text {
+    func font(_ font: CustomFonts, size: CGFloat) -> Text {
+        self.font(Font.custom(font.rawValue, size: size))
+    }
+}
+
 struct FontBuilder {
     let font: Font
     let tracking: Double

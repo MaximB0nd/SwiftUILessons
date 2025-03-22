@@ -28,9 +28,12 @@ struct TextStyleView: View {
                 .padding(.vertical, padding)
                 .foregroundColor(Color(CGColor(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)))
                 .underline(pattern: .dashDotDot, color: .red)
-        }
+        }.padding(.bottom)
         
         Text("Fried eggs with ham, 2 eggs")
+            .font(Font.custom(CustomFonts.ubuntu.rawValue, size: 18))
+            .fontWeight(.bold)
+            .tracking(18 * 0.1)
     }
 }
 
