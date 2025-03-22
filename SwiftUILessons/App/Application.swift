@@ -14,7 +14,9 @@ struct Application: App {
             //StartView()
             //FrameAlignment()
             //StackView()
-            TextStyleView()
+            //TextStyleView()
+            //TextFrame()
+            ColorView()
             
             
             
