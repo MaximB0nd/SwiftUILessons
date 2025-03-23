@@ -16,7 +16,8 @@ struct Application: App {
             //StackView()
             //TextStyleView()
             //TextFrame()
-            ColorView()
+            //ColorView()
+            ImageView()
             
             
             
