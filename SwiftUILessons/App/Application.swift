@@ -18,7 +18,8 @@ struct Application: App {
             //TextFrame()
             //ColorView()
             //ImageView()
-            PaddingOffset()
+            //PaddingOffset()
+            SafeAreaInSetView()
             
             
             
