@@ -9,6 +9,8 @@ import SwiftUI
 
 enum CustomColors: String {
     case Accent
+    case BgLight
+    
 }
 
 extension Color {

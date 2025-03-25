@@ -16,7 +16,7 @@ struct ImageView: View {
             .scaledToFill()
             .clipShape(.buttonBorder)
             .frame(width: 200, height: 400)
-            .clipped()
+      
             
             
         

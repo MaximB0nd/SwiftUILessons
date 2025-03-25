@@ -10,7 +10,7 @@ import SwiftUI
 struct SafeAreaInSetView: View {
     var body: some View {
         Rectangle().fill(.red)
-            .ignoresSafeArea(.container, edges: [.top])
+            .ignoresSafeArea(.container, edges: [.top, .bottom])
     }
 }
 
