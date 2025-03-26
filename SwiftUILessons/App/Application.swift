@@ -19,7 +19,8 @@ struct Application: App {
             //ColorView()
             //ImageView()
             //PaddingOffset()
-            SafeAreaInSetView()
+            //SafeAreaInSetView()
+            PracticeView()
             
             
             

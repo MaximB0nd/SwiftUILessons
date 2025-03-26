@@ -10,6 +10,8 @@ import SwiftUI
 enum CustomColors: String {
     case Accent
     case BgLight
+    case OffButton
+    
     
 }
 
