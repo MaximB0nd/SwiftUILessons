@@ -12,6 +12,7 @@ import SwiftUI
 struct PracticeView: View {
     var body: some View {
         VStack(spacing: 0){
+        VStack(spacing: 0){
             VStack(spacing: 0){
                 
                 
@@ -148,30 +149,46 @@ struct PracticeView: View {
                         .lineSpacing(FontBuilder.bottomBarText.lineSpacing)
                         .padding(.vertical, FontBuilder.bottomBarText.verticalPadding)
                 }.frame(maxWidth: .infinity)
-                
-                VStack(spacing: 2){
-                    Image(systemName: "chart.bar.xaxis.ascending")
-                        .resizable()
-                        .frame(width: 20, height: 20)
-                    Text("STATISTIKS")
-                        .font(FontBuilder.bottomBarText.font)
-                        .lineSpacing(FontBuilder.bottomBarText.lineSpacing)
-                        .padding(.vertical, FontBuilder.bottomBarText.verticalPadding)
-                }.frame(maxWidth: .infinity)
-                    .background(.offButton)
+                VStack{
+                    VStack(spacing: 2){
+                        Image(systemName: "chart.bar.xaxis.ascending")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.white)
+                        Text("STATISTIKS")
+                            .font(FontBuilder.bottomBarText.font)
+                            .lineSpacing(FontBuilder.bottomBarText.lineSpacing)
+                            .padding(.vertical, FontBuilder.bottomBarText.verticalPadding)
+                            .foregroundColor(.white)
+                    }.frame(maxWidth: .infinity, minHeight: 56, maxHeight: 56)
+                        .background(.offButton)
+                        .clipShape(RoundCorner(radius: 20, corners: [.topLeft]))
+                }
+                    
                 
                 VStack(spacing: 2){
                     Image(systemName: "person.and.background.striped.horizontal")
                         .resizable()
                         .frame(width: 20, height: 20)
+                        .foregroundColor(.white)
                     Text("PROFILE")
                         .font(FontBuilder.bottomBarText.font)
                         .lineSpacing(FontBuilder.bottomBarText.lineSpacing)
                         .padding(.vertical, FontBuilder.bottomBarText.verticalPadding)
-                }.frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                }.frame(maxWidth: .infinity, minHeight: 56, maxHeight: 56)
                     .background(.offButton)
                 
             }
+        }
+            
+            HStack{
+                Spacer()
+                Spacer()
+                    .background(.offButton)
+                Spacer()
+                    .background(.offButton)
+            }.ignoresSafeArea(.container, edges: .bottom)
         }
     }
 }
