@@ -26,16 +26,19 @@ struct ScrollerView: View{
         .frame(width: 300, height: 300)
         
         
-        ScrollView ([.vertical, .horizontal]) {
+        ScrollView ([.vertical, .horizontal], showsIndicators: true) {
             VStack {
                 Rectangle()
                     .fill(.blue)
-                    .frame(width: 200, height: 200)
+                    .frame(width: 1000, height: 200)
                 
-                
+                Text("SwiftUI is awesome but it is also very hard to learn 😅 ! ! ! ! If you wamsdfsdfmdkgkkbkckcbmbmcmcmslksldllddlbkb")
             }
-        }
+        }.scrollBounceBehavior(.always, axes: .vertical)
+        .clipped()
         .border(.green, width: 5)
+        
+        
     }
 }
 
