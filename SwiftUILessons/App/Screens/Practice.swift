@@ -19,6 +19,7 @@ struct PracticeView: View {
                     
                     CaloriesInfo()
                     
+                    
                 }.frame(maxWidth: .infinity)
                     .background(Color.init(.BgLight))
                 

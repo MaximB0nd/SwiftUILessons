@@ -15,6 +15,7 @@ struct CaloriesInfo: View {
             
             PacmanCalBar()
             
+            
         }
         .frame(maxWidth: .infinity)
         .background(.white)
@@ -28,10 +29,11 @@ private struct ShowCalButton: View {
     var body: some View {
         HStack(){
             Text("235 cal left")
+             
                 .font(FontBuilder.h2.font)
                 .lineSpacing(FontBuilder.h2.lineSpacing)
                 .padding(.vertical,FontBuilder.h2.verticalPadding)
-                .padding([.trailing], 10)
+                .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 0))
             Image(systemName: "chevron.up")
         }
     }
@@ -40,7 +42,7 @@ private struct ShowCalButton: View {
 
 private struct AddFoodButton: View {
     var body: some View {
-        Text("Add Food")
+        Text("Добавить блюдо")
             .foregroundColor(.white)
             .font(FontBuilder.smallButtonText.font)
             .lineSpacing(FontBuilder.smallButtonText.lineSpacing)
@@ -57,9 +59,12 @@ private struct CaloriesInfoTitle: View {
             
             ShowCalButton()
             
-            Spacer()
+            Spacer().frame(maxWidth: 100).layoutPriority(-1)
             
             AddFoodButton()
+            
+            Spacer()
+            
             
         }.padding([.leading, .trailing, .top], 20)
     }

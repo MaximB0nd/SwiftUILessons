@@ -56,6 +56,9 @@ private struct FoodListItem: View {
     }
 }
 
-#Preview {
-    FoodList()
+struct Preview: PreviewProvider {
+    static var previews: some View {
+        FoodList().previewLayout(.sizeThatFits)
+            .previewDisplayName("List")
+    }
 }
