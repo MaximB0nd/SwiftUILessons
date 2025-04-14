@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FoodList: View {
     var body: some View {
-        VStack(spacing: 0){
+        ScrollView {
             
             FoodListItem(text: "Fried eggs with ham, 2 eggs", calValue: 235)
             FoodListItem(text: "Apple Juice, 200 ml", calValue: 145)
