@@ -29,8 +29,6 @@ struct ManyStackItems: View {
             ForEach(0...100, id: \.self) { id in
                itemView(id: id)
            }
-            
-            
         }
     }
 }
@@ -45,7 +43,6 @@ struct itemView: View {
         }.padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 20))
         Divider()
     }
-    
     
 }
 
