@@ -9,6 +9,9 @@ import SwiftUI
 
 @main
 struct Application: App {
+    
+    @State var text: String = ""
+    
     var body: some Scene {
         WindowGroup {
             //StartView()
@@ -20,8 +23,8 @@ struct Application: App {
             //ImageView()
             //PaddingOffset()
             //SafeAreaInSetView()
-            PracticeView()
-            
+            //PracticeView()
+            CalculatorView()
             
             
         }
