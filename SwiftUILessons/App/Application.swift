@@ -24,7 +24,8 @@ struct Application: App {
             //PaddingOffset()
             //SafeAreaInSetView()
             //PracticeView()
-            CalculatorView()
+            //CalculatorView()
+            ButtonsView()
             
             
         }

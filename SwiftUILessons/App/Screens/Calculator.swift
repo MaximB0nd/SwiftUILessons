@@ -11,13 +11,16 @@ struct CalculatorView: View {
     
     var body: some View {
         VStack(spacing: 0){
+            Spacer()
+            
             TopTextView()
             
             ButtonGrid()
             
         }
+        .frame(minWidth: 300, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
         .background(.black)
-        .ignoresSafeArea(.all)
+        
         
     }
     
@@ -25,3 +28,8 @@ struct CalculatorView: View {
 }
 
 
+struct CalculatorScreen_Previews: PreviewProvider {
+    static var previews: some View {
+        CalculatorView()
+    }
+}
