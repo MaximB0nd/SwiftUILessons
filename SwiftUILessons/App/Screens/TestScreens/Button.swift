@@ -44,16 +44,38 @@ struct ButtonsView: View {
                     }
                 }
             Button {}
-                label: {
-                HStack {
-                        
+            label: {
+                
+                HStack (spacing: 10){
+                    
                     Text("TAP ME")
-                    .font(.largeTitle)
+                        .font(.ubuntu, size: 30)
                     Image(systemName: "lasso.badge.sparkles")
-                    .resizable()
-                    .aspectRatio(1, contentMode: .fill)
-                }.frame(width: 200, height: 5)
-                }
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                }.fixedSize(horizontal: true, vertical: true)
+                    .padding(5)
+                    .background(Color.yellow)
+                    .cornerRadius(10)
+                        
+            }.background(.white)
+            
+            ChangingButtonStyleView()
+        }
+    }
+}
+
+struct ChangingButtonStyleView: View {
+    @State var isRed = true
+    
+    
+    var body: some View {
+        Button {isRed = !isRed} label: {
+            Text("I am chainable")
+                .padding()
+                .background(isRed ? .red : .blue)
+                .foregroundColor(.white)
+                .cornerRadius(isRed ? 15 : 0)
         }
     }
 }
