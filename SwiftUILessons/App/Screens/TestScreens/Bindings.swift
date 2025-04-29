@@ -16,9 +16,12 @@ struct BindingsView: View {
             
             Text("\(number)")
                 .font(.ubuntu, size: 50)
-            
-            plusButtonView(number: $number)
-                .buttonStyle(plusButtonStyle())
+            HStack (spacing: 0) {
+                minusButtonView(number: $number)
+                    .buttonStyle(plusButtonStyle())
+                plusButtonView(number: $number)
+                    .buttonStyle(plusButtonStyle())
+            }
         }
     }
 }
@@ -32,6 +35,21 @@ struct plusButtonView: View {
             number += 1
         } label: {
             Image(systemName: "plus.app.fill")
+                .resizable()
+                .frame(width: 50, height: 50)
+        }
+    }
+}
+
+struct minusButtonView: View {
+    
+    @Binding var number: Int
+    
+    var body: some View {
+        Button {
+            number -= 1
+        } label: {
+            Image(systemName: "minus.square.fill")
                 .resizable()
                 .frame(width: 50, height: 50)
         }
