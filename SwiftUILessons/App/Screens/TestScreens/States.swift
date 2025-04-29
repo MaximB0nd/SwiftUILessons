@@ -49,16 +49,6 @@ struct StatesView: View {
 
 
 
-struct plusButtonView: View {
-    var body: some View {
-        Button {} label: {
-            Image(systemName: "plus.app.fill")
-                .resizable()
-                .frame(width: 50, height: 50)
-        }
-    }
-}
-
 
 struct plusButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
@@ -67,7 +57,7 @@ struct plusButtonStyle: ButtonStyle {
             .padding(10)
             .background(.clear)
             .cornerRadius(5)
-            .opacity(configuration.isPressed ? 0.5 : 1)
+            .opacity(configuration.isPressed ? 0.1 : 1)
             
             
     }
