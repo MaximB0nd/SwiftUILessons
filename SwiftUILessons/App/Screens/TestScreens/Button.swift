@@ -59,6 +59,7 @@ struct ButtonsView: View {
                     .cornerRadius(10)
                         
             }.background(.white)
+                .buttonStyle(RedButtonStyle())
             
             ChangingButtonStyleView()
         }

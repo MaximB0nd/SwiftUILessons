@@ -25,9 +25,9 @@ struct Application: App {
             //SafeAreaInSetView()
             //PracticeView()
             //CalculatorView()
-            ButtonsView()
-            
             
         }
     }
 }
+
+

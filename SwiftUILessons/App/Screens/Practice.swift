@@ -41,3 +41,24 @@ struct PracticeView: View {
 
 
 
+struct View1: View {
+    @State var clickCount = 0
+
+    var body: some View {
+        VStack {
+            Button("Click me") {
+                clickCount += 1
+            }
+            Text("count #1: \(clickCount)")
+            View2(clickCount: clickCount)
+        }
+    }
+}
+
+struct View2: View {
+    @State var clickCount = 0
+
+    var body: some View {
+        Text("count #2: \(clickCount)")
+    }
+}
