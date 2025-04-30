@@ -9,13 +9,21 @@ import SwiftUI
 
 struct CalculatorView: View {
     
+    @State var number1: String = "0"
+    @State var number2: String = ""
+    @State var action: String = ""
+    @State var isNumber1: Bool = true
+    @State var isAction: Bool = false
+    
+    @State var position = ScrollPosition(edge: .trailing)
+    
     var body: some View {
         VStack(spacing: 0){
-            Spacer()
             
-            TopTextView()
             
-            ButtonGrid()
+            TopTextView(number1: $number1, action: $action, number2: $number2, isNumber1: $isNumber1, isAction: $isAction, position: $position)
+            
+            ButtonGrid(number1: $number1, action: $action, number2: $number2, isNumber1: $isNumber1, isAction: $isAction, position: $position)
             
         }
         .frame(minWidth: 300, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)

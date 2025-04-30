@@ -9,41 +9,34 @@ import SwiftUI
 
 struct ButtonGrid: View {
     
+    @Binding var number1: String
+    @Binding var action: String
+    @Binding var number2: String
+    @Binding var isNumber1: Bool
+    @Binding var isAction: Bool
+    @Binding var position: ScrollPosition
+    
+    
     var body: some View {
         
         Grid(horizontalSpacing: 10, verticalSpacing: 10) {
             
             
             GridRow {
-                ButtonView("AC", .black, .white)
-                ButtonView("+-", .black, .white)
-                ButtonView("%", .black, .white)
-                ButtonView("/", .white, .orange)
+                
                
             }
             GridRow {
-                ButtonView("7", .white, .gray)
-                ButtonView("8", .white, .gray)
-                ButtonView("9", .white, .gray)
-                ButtonView("Х", .white, .orange)
+                
             }
             GridRow {
-                ButtonView("4", .white, .gray)
-                ButtonView("5", .white, .gray)
-                ButtonView("6", .white, .gray)
-                ButtonView("-", .white, .orange)
+                ButtonNumberView(symbol: "1", number1: $number1, number2: $number2, isNumber1: $isNumber1, isAction: $isAction, position: $position)
             }
             GridRow {
-                ButtonView("1", .white, .gray)
-                ButtonView("2", .white, .gray)
-                ButtonView("3", .white, .gray)
-                ButtonView("+", .white, .orange)
+                
             }
             GridRow {
-                ButtonView("0", .white, .gray)
-                Text("")
-                ButtonView(".", .white, .gray)
-                ButtonView("=", .white, .gray)
+                
             }
         }.fixedSize(horizontal: false, vertical: true)
     }
@@ -51,32 +44,41 @@ struct ButtonGrid: View {
     
 }
 
-struct ButtonView: View {
+struct ButtonNumberView: View {
     
     let symbol: String
-    let fg: Color
-    let bg: Color
+    
+    @Binding var number1: String
+    @Binding var number2: String
+    @Binding var isNumber1: Bool
+    @Binding var isAction: Bool
+    @Binding var position: ScrollPosition
+    
     
     
     var body: some View {
-        Text(symbol)
-            .foregroundColor(fg)
-            .font(.system(size: 60))
-            .minimumScaleFactor(0.2)
-            .padding(20)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .aspectRatio(1, contentMode: .fit)
-            .background(bg)
-            .cornerRadius(.infinity)
+        Button {
+            position.scrollTo(edge: .trailing)
+            
+            if (isNumber1) {
+                if (number1 == "0") {
+                    number1 = symbol
+                }
+                else {
+                    number1 += symbol
+                }
+            }
+            else if (!isNumber1){
+                isAction = false
+                number2 += symbol
+            }
+        } label: {
+            Text("\(symbol)")
+        }
     }
     
-    init(_ symbol: String = "0", _ fg: Color = .white, _ bg: Color = .black) {
-        self.symbol = symbol
-        self.bg = bg
-        self.fg = fg
-    }
 }
 
 #Preview {
-    ButtonGrid()
+    
 }
