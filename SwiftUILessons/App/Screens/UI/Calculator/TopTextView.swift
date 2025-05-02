@@ -21,19 +21,22 @@ struct TopTextView: View {
              
             
             Text("\(number1)\(isAction ? action : "")\((!isAction && !isNumber1) ? number2 : "")")
-                .lineLimit(1)
-                .minimumScaleFactor(0.4)
+                .multilineTextAlignment(.trailing)
                 .foregroundStyle(.white)
                 .font(Font.system(size: 90, weight: .thin))
                 .padding([.leading, .trailing], 30)
+                .frame(maxWidth: .infinity, alignment: .trailing)
+                .scaleEffect(x: -1, y: 1)
+                
+                
                 
                 
         }
         .scrollPosition($position)
-        
+        .scrollBounceBehavior(.basedOnSize, axes: [.horizontal])
+        .scaleEffect(x: -1, y: 1)
             
-        
-        
+    
     
         
             
@@ -47,10 +50,15 @@ struct prev: PreviewProvider {
     
     @State static var position = ScrollPosition(edge: .trailing)
     
+    @State static var number2: String = ""
+    @State static var action: String = ""
+    @State static var isNumber1: Bool = true
+    @State static var isAction: Bool = false
+    
     static var previews: some View {
         ZStack {
             Rectangle().ignoresSafeArea(edges: .all)
-            //TopTextView(number1: $number1, position: $position)
+            TopTextView(number1: $number1, action: $action, number2: $number2, isNumber1: $isNumber1, isAction: $isAction, position: $position)
         }
     }
 }

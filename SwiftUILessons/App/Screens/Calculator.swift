@@ -15,11 +15,11 @@ struct CalculatorView: View {
     @State var isNumber1: Bool = true
     @State var isAction: Bool = false
     
-    @State var position = ScrollPosition(edge: .trailing)
+    @State var position = ScrollPosition(edge: .leading)
     
     var body: some View {
         VStack(spacing: 0){
-            
+            Spacer()
             
             TopTextView(number1: $number1, action: $action, number2: $number2, isNumber1: $isNumber1, isAction: $isAction, position: $position)
             

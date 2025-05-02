@@ -17,48 +17,14 @@ struct ButtonGrid: View {
     @Binding var position: ScrollPosition
     
     
+    
+    
     var body: some View {
         
-        Grid(horizontalSpacing: 10, verticalSpacing: 10) {
-            
-            
-            GridRow {
-                
-               
-            }
-            GridRow {
-                
-            }
-            GridRow {
-                ButtonNumberView(symbol: "1", number1: $number1, number2: $number2, isNumber1: $isNumber1, isAction: $isAction, position: $position)
-            }
-            GridRow {
-                
-            }
-            GridRow {
-                
-            }
-        }.fixedSize(horizontal: false, vertical: true)
-    }
-    
-    
-}
-
-struct ButtonNumberView: View {
-    
-    let symbol: String
-    
-    @Binding var number1: String
-    @Binding var number2: String
-    @Binding var isNumber1: Bool
-    @Binding var isAction: Bool
-    @Binding var position: ScrollPosition
-    
-    
-    
-    var body: some View {
-        Button {
-            position.scrollTo(edge: .trailing)
+        let NumberButtonProperties = (number1: $number1, number2: $number2, isNumber1: $isNumber1, isAction: $isAction, position: $position)
+        
+        let numberAction: (String) -> Void = { symbol in
+            position.scrollTo(edge: .leading)
             
             if (isNumber1) {
                 if (number1 == "0") {
@@ -72,13 +38,124 @@ struct ButtonNumberView: View {
                 isAction = false
                 number2 += symbol
             }
-        } label: {
-            Text("\(symbol)")
+            
         }
+        
+        Grid(horizontalSpacing: 10, verticalSpacing: 10) {
+            
+            
+            GridRow {
+                ButtonNumberView(path: "delete.backward", numberAction, NumberButtonProperties) .buttonStyle(CalculatorButtonStyle())
+                
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+               
+            }
+            GridRow {
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+            }
+            GridRow {
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+            }
+            GridRow {
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+            }
+            GridRow {
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+            }
+        }.padding(10)
+    }
+    
+    
+}
+
+struct ButtonNumberView: View {
+    
+    var symbol: String = ""
+    
+    @Binding var number1: String
+    @Binding var number2: String
+    @Binding var isNumber1: Bool
+    @Binding var isAction: Bool
+    @Binding var position: ScrollPosition
+    
+    
+    var imageName: String = ""
+    let action: (String) -> Void
+    
+    var body: some View {
+        Button {
+            action(symbol)
+        } label: {
+            if !symbol.isEmpty {
+                Text("\(symbol)")
+                    .font(Font.system(size: 40))
+                    .minimumScaleFactor(0.2)
+                    .foregroundStyle(.white)
+            }
+            else {
+                Image(systemName: imageName)
+                    .font(Font.system(size: 40))
+                    .foregroundStyle(.white)
+                    
+                
+            }
+                
+        }
+    }
+    
+    init (path: String, _ action: @escaping (String) -> Void, _ NumberButtonProperties: (number1: Binding<String>, number2: Binding<String>, isNumber1: Binding<Bool>, isAction: Binding<Bool>, position: Binding<ScrollPosition>))
+    {
+        imageName = path
+        self._number1 = NumberButtonProperties.number1
+        self._number2 = NumberButtonProperties.number2
+        self._isAction = NumberButtonProperties.isAction
+        self._isNumber1 = NumberButtonProperties.isNumber1
+        self._position = NumberButtonProperties.position
+        self.action = action
+        
+    }
+    
+    
+    init( symbol: String, _ action: @escaping (String) -> Void, _ NumberButtonProperties: (number1: Binding<String>, number2: Binding<String>, isNumber1: Binding<Bool>, isAction: Binding<Bool>, position: Binding<ScrollPosition>))
+    {
+        self.symbol = symbol
+        self._number1 = NumberButtonProperties.number1
+        self._number2 = NumberButtonProperties.number2
+        self._isAction = NumberButtonProperties.isAction
+        self._isNumber1 = NumberButtonProperties.isNumber1
+        self._position = NumberButtonProperties.position
+        self.action = action
     }
     
 }
 
-#Preview {
+struct ButtonGridPreview: PreviewProvider {
     
+    @State static var number1 = "0"
+    
+    @State static var position = ScrollPosition(edge: .trailing)
+    
+    @State static var number2: String = "0"
+    @State static var action: String = ""
+    @State static var isNumber1: Bool = true
+    @State static var isAction: Bool = false
+    
+    
+    static var previews: some View {
+        ButtonGrid(number1: $number1, action: $action, number2: $number2, isNumber1: $isNumber1, isAction: $isAction, position: $position)
+    }
 }
