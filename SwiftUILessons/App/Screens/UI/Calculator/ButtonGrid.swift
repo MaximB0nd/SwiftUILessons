@@ -7,49 +7,46 @@
 
 import SwiftUI
 
+
 struct ButtonGrid: View {
     
-    @Binding var number1: String
-    @Binding var action: String
-    @Binding var number2: String
-    @Binding var isNumber1: Bool
-    @Binding var isAction: Bool
+    @Binding var expression: String
     @Binding var position: ScrollPosition
-    
-    
-    
     
     var body: some View {
         
-        let NumberButtonProperties = (number1: $number1, number2: $number2, isNumber1: $isNumber1, isAction: $isAction, position: $position)
+        let NumberButtonProperties = (expression: $expression, position: $position)
         
         let numberAction: (String) -> Void = { symbol in
-            position.scrollTo(edge: .leading)
             
-            if (isNumber1) {
-                if (number1 == "0") {
-                    number1 = symbol
-                }
-                else {
-                    number1 += symbol
-                }
-            }
-            else if (!isNumber1){
-                isAction = false
-                number2 += symbol
-            }
+            
             
         }
+        
+        let deleteAction: (String) -> Void = { a in
+            
+        }
+        
+        let plusSlashMinusAction: (String) -> Void = { a in
+        }
+        
+        let actionAction: (String) -> Void = { symbol in
+            
+        }
+        
+    
         
         Grid(horizontalSpacing: 10, verticalSpacing: 10) {
             
             
             GridRow {
-                ButtonNumberView(path: "delete.backward", numberAction, NumberButtonProperties) .buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(path: "delete.backward", deleteAction, NumberButtonProperties) .buttonStyle(CalculatorButtonStyle())
+                
+                ButtonNumberView(path: "plus.forwardslash.minus", plusSlashMinusAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                
                 
                 ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
-                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
-                ButtonNumberView(symbol: "1", numberAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
+                ButtonNumberView(path: "divide", actionAction, NumberButtonProperties).buttonStyle(CalculatorButtonStyle())
                
             }
             GridRow {
@@ -86,10 +83,7 @@ struct ButtonNumberView: View {
     
     var symbol: String = ""
     
-    @Binding var number1: String
-    @Binding var number2: String
-    @Binding var isNumber1: Bool
-    @Binding var isAction: Bool
+    @Binding var expression: String
     @Binding var position: ScrollPosition
     
     
@@ -98,6 +92,7 @@ struct ButtonNumberView: View {
     
     var body: some View {
         Button {
+            position.scrollTo(edge: .leading)
             action(symbol)
         } label: {
             if !symbol.isEmpty {
@@ -117,26 +112,20 @@ struct ButtonNumberView: View {
         }
     }
     
-    init (path: String, _ action: @escaping (String) -> Void, _ NumberButtonProperties: (number1: Binding<String>, number2: Binding<String>, isNumber1: Binding<Bool>, isAction: Binding<Bool>, position: Binding<ScrollPosition>))
+    init (path: String, _ action: @escaping (String) -> Void, _ NumberButtonProperties: (expression: Binding<String>, position: Binding<ScrollPosition>))
     {
         imageName = path
-        self._number1 = NumberButtonProperties.number1
-        self._number2 = NumberButtonProperties.number2
-        self._isAction = NumberButtonProperties.isAction
-        self._isNumber1 = NumberButtonProperties.isNumber1
+        self._expression = NumberButtonProperties.expression
         self._position = NumberButtonProperties.position
         self.action = action
         
     }
     
     
-    init( symbol: String, _ action: @escaping (String) -> Void, _ NumberButtonProperties: (number1: Binding<String>, number2: Binding<String>, isNumber1: Binding<Bool>, isAction: Binding<Bool>, position: Binding<ScrollPosition>))
+    init( symbol: String, _ action: @escaping (String) -> Void, _ NumberButtonProperties: (expression: Binding<String>, position: Binding<ScrollPosition>))
     {
         self.symbol = symbol
-        self._number1 = NumberButtonProperties.number1
-        self._number2 = NumberButtonProperties.number2
-        self._isAction = NumberButtonProperties.isAction
-        self._isNumber1 = NumberButtonProperties.isNumber1
+        self._expression = NumberButtonProperties.expression
         self._position = NumberButtonProperties.position
         self.action = action
     }
@@ -145,17 +134,12 @@ struct ButtonNumberView: View {
 
 struct ButtonGridPreview: PreviewProvider {
     
-    @State static var number1 = "0"
-    
     @State static var position = ScrollPosition(edge: .trailing)
     
-    @State static var number2: String = "0"
-    @State static var action: String = ""
-    @State static var isNumber1: Bool = true
-    @State static var isAction: Bool = false
+    @State static var expression: String = ""
     
     
     static var previews: some View {
-        ButtonGrid(number1: $number1, action: $action, number2: $number2, isNumber1: $isNumber1, isAction: $isAction, position: $position)
+        ButtonGrid(expression: $expression, position: $position)
     }
 }

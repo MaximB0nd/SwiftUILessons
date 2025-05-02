@@ -9,18 +9,14 @@ import SwiftUI
 
 struct TopTextView: View {
     
-    @Binding var number1: String
-    @Binding var action: String
-    @Binding var number2: String
-    @Binding var isNumber1: Bool
-    @Binding var isAction: Bool
+    @Binding var expression: String
     @Binding var position: ScrollPosition
     
     var body: some View {
         ScrollView (.horizontal) {
              
             
-            Text("\(number1)\(isAction ? action : "")\((!isAction && !isNumber1) ? number2 : "")")
+            Text(expression)
                 .multilineTextAlignment(.trailing)
                 .foregroundStyle(.white)
                 .font(Font.system(size: 90, weight: .thin))
@@ -45,20 +41,14 @@ struct TopTextView: View {
 }
 
 struct prev: PreviewProvider {
-    
-    @State static var number1 = "11231"
-    
-    @State static var position = ScrollPosition(edge: .trailing)
-    
-    @State static var number2: String = ""
-    @State static var action: String = ""
-    @State static var isNumber1: Bool = true
-    @State static var isAction: Bool = false
+        
+    @State static var expression: String = "123"
+    @State static var position = ScrollPosition(edge: .leading)
     
     static var previews: some View {
         ZStack {
             Rectangle().ignoresSafeArea(edges: .all)
-            TopTextView(number1: $number1, action: $action, number2: $number2, isNumber1: $isNumber1, isAction: $isAction, position: $position)
+            TopTextView(expression: $expression, position: $position)
         }
     }
 }
