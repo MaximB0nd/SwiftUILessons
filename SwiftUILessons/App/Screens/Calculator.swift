@@ -10,7 +10,7 @@ import SwiftUI
 struct CalculatorView: View {
     
     
-    @State var expression: String = ""
+    @State var expression: Substring = " "
     
     @State var position = ScrollPosition(edge: .leading)
     
