@@ -7,10 +7,18 @@
 
 import SwiftUI
 
+enum Action: String {
+    case divide 
+    case plus
+    case minus
+    case multiply
+}
+
 struct CalculatorView: View {
     
     
-    @State var expression: Substring = " 0"
+    @State var expression: [Substring] = ["-0"]
+    @State var actions: [Action] = []
     
     @State var position = ScrollPosition(edge: .leading)
     
@@ -18,9 +26,9 @@ struct CalculatorView: View {
         VStack(spacing: 0){
             Spacer()
             
-            TopTextView(expression: $expression, position: $position)
+            TopTextView(expression: $expression, actions: $actions, position: $position)
             
-            ButtonGrid(expression: $expression, position: $position)
+            ButtonGrid(expression: $expression, actions: $actions, position: $position)
             
         }
         .frame(minWidth: 300, maxWidth: .infinity, minHeight: 400, maxHeight: .infinity)
