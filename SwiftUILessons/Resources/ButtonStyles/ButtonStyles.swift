@@ -18,12 +18,15 @@ struct RedButtonStyle: ButtonStyle {
     }
 }
 
-struct CalculatorButtonStyle: ButtonStyle {
+struct NumberButtonStyle: ButtonStyle {
+    
+    let color: CustomColors
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .padding(10)
-            .background(configuration.isPressed ? Color.white : Color.gray)
+            .background(configuration.isPressed ? .white : Color(color))
             .opacity(configuration.isPressed ? 0.9 : 1)
             .cornerRadius(180)
             .aspectRatio(1, contentMode: .fit)
