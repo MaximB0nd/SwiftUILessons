@@ -9,7 +9,7 @@ import SwiftUI
 
 struct TopTextView: View {
     
-    @Binding var expression: [Substring]
+    @Binding var expression: [String]
     @Binding var actions: [Action]
     @Binding var position: ScrollPosition
     
@@ -59,7 +59,7 @@ struct TopTextView: View {
 
 struct prev: PreviewProvider {
         
-    @State static var expression: [Substring] = ["123", "123"]
+    @State static var expression: [String] = ["123", "123"]
     @State static var position = ScrollPosition(edge: .leading)
     @State static var actions: [Action] = [.plus]
     

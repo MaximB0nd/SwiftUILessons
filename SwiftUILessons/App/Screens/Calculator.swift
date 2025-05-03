@@ -17,7 +17,7 @@ enum Action: String {
 struct CalculatorView: View {
     
     
-    @State var expression: [Substring] = ["-0"]
+    @State var expression: [String] = ["-0"]
     @State var actions: [Action] = []
     
     @State var position = ScrollPosition(edge: .leading)
