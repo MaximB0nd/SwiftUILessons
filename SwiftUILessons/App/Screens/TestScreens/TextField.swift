@@ -16,8 +16,6 @@ struct TextFields: View {
             TextField("Цитата", text: $text, prompt: Text("Цитата"), axis: .vertical)
                 .onSubmit{print(text)}
             TextField("Число", value: .constant(0), format: .number)
-            
-            
         }
     }
 }
