@@ -25,7 +25,8 @@ struct Application: App {
             //SafeAreaInSetView()
             //PracticeView()
             //BindingsView()
-            GesturesView()
+            //GesturesView()
+            PresentView()
         }
     }
 }
