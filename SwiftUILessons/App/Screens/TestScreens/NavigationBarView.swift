@@ -23,6 +23,14 @@ struct NavigationBarView: View {
                         ToolbarItem(placement: .principal, content: {Text("Hello")})
                     }
             }
+            .navigationTitle("Go back")
+            .toolbarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal, content: {Text("First window")})
+            }
+            .toolbarBackground(.red, for: .navigationBar)
+            
+            
         
         }
     }
