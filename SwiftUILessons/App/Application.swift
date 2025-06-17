@@ -26,7 +26,8 @@ struct Application: App {
             //PracticeView()
             //BindingsView()
             //GesturesView()
-            PresentView()
+            //PresentView()
+            TabBarView()
         }
     }
 }
