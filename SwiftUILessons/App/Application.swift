@@ -27,7 +27,8 @@ struct Application: App {
             //BindingsView()
             //GesturesView()
             //PresentView()
-            TabBarView()
+            //TabBarView()
+            FlexibleButton()
         }
     }
 }
