@@ -17,11 +17,13 @@ struct DragCircle: View {
             .position(position)
             .gesture(
                 DragGesture()
+                    .onEnded {_ in 
+                        position = .init(x: 50, y: 50)
+                    }
                     .onChanged { value in
                         position = value.location
                     }
             )
-        
     }
 }
 
